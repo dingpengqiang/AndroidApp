@@ -1,3 +1,6 @@
+/**
+ * 为这个构建应用 Gradle 的 Android 插件，以便 android 代码块中 Android 特定的构建配置可用
+ */
 apply plugin: 'com.android.application'
 
 apply plugin: 'kotlin-android'
@@ -5,26 +8,176 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 26
+    /**
+     * compileSdkVersion 用来指定 Gradle 用来编译应用的 Android API level，也就是说
+     * 你的应用可以使用这个 API level 及更低 API level 的 API 特性
+     */
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    /**
+     * buildToolsVersion 用来指定 SDK 所有构建工具、命令行工具、以及 Gradle 用来构建应用的编译器版本
+     * 你需要使用 SDK Manager 下载好该版本的构建工具
+     * 在 3.0.0 或更高版本的插件中。该属性是可选的，插件会使用推荐的版本
+     */
+    buildToolsVersion  rootProject.ext.android["buildToolsVersion"]
+
+    //todo 添加org.apache.http.legacy依赖库
+    useLibrary 'org.apache.http.legacy'
+    /**
+     * defaultConfig 代码块包含所有构建变体（build variants）默认使用的配置，也可以重写 main/AndroidManifest.xml 中的属性
+     * 当然，你也可以在 product flavors（产品风味）中重写其中一些属性
+     */
     defaultConfig {
+        /**
+         * applicationId 是发布时的唯一指定包名，尽管如此，你还是需要在 main/AndroidManifest.xml 文件中
+         * 定义值是该包名的 package 属性
+         */
         applicationId "com.noway.androidapp"
-        minSdkVersion 21
-        targetSdkVersion 26
-        versionCode 1
-        versionName "1.0"
+        // 定义可以运行该应用的最小 API level
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        // 指定测试该应用的 API level
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        // 定义应用的版本号
+        versionCode rootProject.ext.android["versionCode"]
+        // 定义应用的版本号描述
+        versionName rootProject.ext.android["versionName"]
+
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
+
+    /**
+     * signingConfigs 签名文件的配置
+     */
+    signingConfigs {
+        debug {
+            // No debug config
+        }
+//
         release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+//            storeFile file("H:\\Project\\....jks")
+//            storePassword System.getenv("KSTOREPWD")
+//            keyAlias "bieming"
+//            keyPassword System.getenv("KEYPWD")
         }
     }
-}
+    /**
+     * buildTypes 代码块用来配置多个构建类型，构建系统默认定义了两个构建类型: debug 和 release
+     * debug 构建类型默认不显式声明，但它包含调试工具并使用 debug key 签名
+     * release 构建类型默认应用了混淆配置
+     */
+    buildTypes {
+        debug{
+            // 显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "true"
 
+            minifyEnabled false
+            zipAlignEnabled false
+            shrinkResources false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            // 不显示Log
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+
+            // 混淆
+            minifyEnabled false
+            // Zipalign优化
+            zipAlignEnabled true
+            // 移除无用的resource文件
+            shrinkResources false
+            // 前一部分代表系统默认的android程序的混淆文件，该文件已经包含了基本的混淆声明，后一个文件是自己的定义混淆文件
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            signingConfig signingConfigs.release
+        }
+    }
+    /**
+     * 由于 product flavors 必须属于一个已命名的 flavor dimension，所以你至少需要定义一个 flavor dimension
+     * 如定义一个等级和最小 api 的 flavor dimension
+     */
+    flavorDimensions "tier", "minApi"
+    productFlavors {
+        free {
+            // 这个 product flavor 属于 "tier" flavor dimension
+            // 如果只有一个 dimension 那么这个属性就是可选的
+            dimension "tier"
+            //...
+        }
+        paid {
+            dimension "tier"
+            //...
+        }
+        minApi23 {
+            dimension "minApi"
+            //...
+        }
+
+    }
+    productFlavors.all { flavor ->
+        flavor.manifestPlaceholders = [CHANNEL_VALUE: name]
+    }
+    //配置自定义打包名称
+    android.applicationVariants.all { variant ->
+        variant.outputs.all {
+            //
+//            outputFileName = "${variant.name}-${variant.versionName}.apk"
+            // 定义生成的apk的名称
+            def apkName
+
+            if (variant.buildType.name == 'release') {
+
+                apkName = "ZhaoYun_" + variant.productFlavors[0].name + "_${variant.versionName}.apk"
+            } else if (variant.buildType.name == 'debug') {
+
+//                    variant.mergedFlavor.versionName = getVersionName() + "." + releaseTime()
+
+                apkName = "ZhaoYun_${variant.versionName} " + "-" + releaseTime() + "_debug.apk"
+            }
+            //这里使用之前定义apk文件名称
+            outputFileName = apkName
+
+        }
+    }
+/**
+ * 你可以使用 splits 代码块配置为不同屏幕分辨率或 ABI 的设备生成仅包含其支持的代码和资源的 APK
+ * 同时你需要配置 build 文件以便每个 APK 使用不同的 versionCode
+ */
+    splits {
+        density {
+            // 启用或禁用构建多个 APK
+            enable false
+            // 构建多个 APK 时排除这些分辨率
+            exclude "ldpi", "tvdpi", "xxxhdpi", "400dpi", "560dpi"
+        }
+    }
+    dexOptions {
+        incremental true
+    }
+    /**
+     *  修改打包不能成功配置 用来取消构建打包时候lint错误检查
+     */
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
+
+    /**
+     * java jdk版本配置
+     */
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+//定义时间
+def releaseTime() {
+    return new Date().format("yyyyMMdd", TimeZone.getTimeZone("UTC"))
+}
+/**
+ * 该 module 级 build 文件的 dependencies 代码块仅用来指定该 module 自己的依赖
+ */
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation"org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
     testImplementation 'junit:junit:4.12'

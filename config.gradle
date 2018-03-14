@@ -1,0 +1,209 @@
+
+ext {
+    android = [
+            compileSdkVersion       : 26,
+            buildToolsVersion       : "27.0.3",
+            minSdkVersion           : 21,
+            targetSdkVersion        : 26,
+            versionCode             : 1,
+            versionName             : "1.0.0"
+    ]
+
+    version = [
+            androidSupportSdkVersion: "27.1.0",
+            androidEspressoVersion  : "3.0.1",
+            constraintLayoutVersion : "1.0.2",
+            kotlinVersion           : "1.2.10",
+            multidexVersion         : "1.0.2",
+            retrofitSdkVersion      : "2.3.0",
+            dagger2SdkVersion       : "2.12",
+            rxlifecycleSdkVersion   : "1.0",
+            rxlifecycle2SdkVersion  : "2.2.0"
+
+    ]
+
+    dependencies = [
+            //support
+            "appcompat-v7"                : "com.android.support:appcompat-v7:${version["androidSupportSdkVersion"]}",
+            "support-v4"                  : "com.android.support:support-v4:${version["androidSupportSdkVersion"]}",
+            "annotations"                 : "com.android.support:support-annotations:${version["androidSupportSdkVersion"]}",
+            "kotlin"                      : "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${version["kotlinVersion"]}",
+            "multidex"                    : "com.android.support:multidex:${version["multidexVersion"]}",
+            "design"                      : "com.android.support:design:${version["androidSupportSdkVersion"]}",
+            "cardview-v7"                 : "com.android.support:cardview-v7:${version["androidSupportSdkVersion"]}",
+            "recyclerview-v7"             : "com.android.support:recyclerview-v7:${version["androidSupportSdkVersion"]}",
+            //test
+            "junit"                       : "junit:junit:4.12",
+            "androidJUnitRunner"          : "android.support.test.runner.AndroidJUnitRunner",
+            "runner"                      : "com.android.support.test:runner:1.0.1",
+            "espresso-core"               : "com.android.support.test.espresso:espresso-core:${version["androidEspressoVersion"]}",
+            "espresso-contrib"            : "com.android.support.test.espresso:espresso-contrib:${version["androidEspressoVersion"]}",
+            "espresso-intents"            : "com.android.support.test.espresso:espresso-intents:${version["androidEspressoVersion"]}",
+
+            //mocking框架，它让你用简洁的API做测试
+            "mockito-core"                : "org.mockito:mockito-core:1.+",
+
+            //log
+            "timber"                      : "com.jakewharton.timber:timber:4.5.1",
+            "logger"                      : "com.orhanobut:logger:2.1.1",
+
+            //内存泄漏
+            "canary-debug"                : "com.squareup.leakcanary:leakcanary-android:1.5.4",
+            "canary-release"              : "com.squareup.leakcanary:leakcanary-android-no-op:1.5.4",
+
+            "umeng-analytics"             : "com.umeng.analytics:analytics:6.0.1",
+
+            //network
+            "retrofit2"                   : "com.squareup.retrofit2:retrofit:${version["retrofitSdkVersion"]}",
+            "retrofit2-converter-gson"    : "com.squareup.retrofit2:converter-gson:${version["retrofitSdkVersion"]}",
+            "retrofit2-adapter-rxjava"    : "com.squareup.retrofit2:adapter-rxjava:${version["retrofitSdkVersion"]}",
+            "retrofit2-adapter-rxjava2"   : "com.squareup.retrofit2:adapter-rxjava2:${version["retrofitSdkVersion"]}",
+            "okhttp3-logging-interceptor" : "com.squareup.okhttp3:logging-interceptor:3.9.1",
+            "okhttp3"                     : "com.squareup.okhttp3:okhttp:3.9.0",
+            "okhttp-urlconnection"        : "com.squareup.okhttp:okhttp-urlconnection:2.0.0",
+            "gson"                        : "com.google.code.gson:gson:2.8.2",
+            "fastjson"                    : "com.alibaba:fastjson:1.2.34",
+            "glide"                       : "com.github.bumptech.glide:glide:4.6.1",
+            "glide-compiler"              : "com.github.bumptech.glide:compiler:4.6.1",
+            "glide-loader-okhttp3"        : "com.github.bumptech.glide:okhttp3-integration:4.6.1",
+            "glide-transformations"       : "jp.wasabeef:glide-transformations:3.0.1",
+            "picasso"                     : "com.squareup.picasso:picasso:2.5.2",
+            "picasso-transformations"     : "jp.wasabeef:picasso-transformations:2.1.2",
+
+            //rx1
+            "rxandroid"                   : "io.reactivex:rxandroid:1.2.1",
+            "rxjava"                      : "io.reactivex:rxjava:1.3.0",
+            "rxlifecycle"                 : "com.trello:rxlifecycle:${version["rxlifecycleSdkVersion"]}",
+            "rxlifecycle-components"      : "com.trello:rxlifecycle-components:${version["rxlifecycleSdkVersion"]}",
+            "rxcache"                     : "com.github.VictorAlbertos.RxCache:runtime:1.7.0-1.x",
+            "rxcache-jolyglot-gson"       : "com.github.VictorAlbertos.Jolyglot:gson:0.0.3",
+            "rxbinding-recyclerview-v7"   : "com.jakewharton.rxbinding:rxbinding-recyclerview-v7:1.0.1",
+            "rxpermissions"               : "com.tbruyelle.rxpermissions:rxpermissions:0.9.4@aar",
+            "rxerrorhandler"              : "me.jessyan:rxerrorhandler:1.0.1",
+            //rx2
+            "rxandroid2"                  : "io.reactivex.rxjava2:rxandroid:2.0.1",
+            "rxjava2"                     : "io.reactivex.rxjava2:rxjava:2.1.6",
+            "rxlifecycle2"                : "com.trello.rxlifecycle2:rxlifecycle:${version["rxlifecycle2SdkVersion"]}",
+            "rxlifecycle2-android"        : "com.trello.rxlifecycle2:rxlifecycle-android:${version["rxlifecycle2SdkVersion"]}",
+            "rxlifecycle2-components"     : "com.trello.rxlifecycle2:rxlifecycle-components:${version["rxlifecycle2SdkVersion"]}",
+            "rxcache2"                    : "com.github.VictorAlbertos.RxCache:runtime:1.8.1-2.x",
+            "rxpermissions2"              : "com.tbruyelle.rxpermissions2:rxpermissions:0.9.5@aar",
+            "rxerrorhandler2"             : "me.jessyan:rxerrorhandler:2.1.0",
+
+            //网络请求框架
+            //okhttp-utils（鸿洋）
+            "okhttputils"                 : "com.zhy:okhttputils:2.6.2",
+            "OkGo"                        : "com.lzy.net:okgo:3.0.4",
+            "retrofit-url-manager"        : "me.jessyan:retrofit-url-manager:1.1.0",
+
+            //tools
+            "dagger2"                  : "com.google.dagger:dagger:${version["dagger2SdkVersion"]}",
+            "dagger2-compiler"         : "com.google.dagger:dagger-compiler:${version["dagger2SdkVersion"]}",
+
+            "butterknife"              : "com.jakewharton:butterknife:8.8.1",
+            "butterknife-compiler"     : "com.jakewharton:butterknife-compiler:8.8.1",
+
+            //Android平台的事件总线框架
+            "androideventbus"          : "org.simple:androideventbus:1.0.5.1",
+            "eventbus"                 : "org.greenrobot:eventbus:3.0.0",
+            "otto"                     : "com.squareup:otto:1.3.8",
+
+            "javax.annotation"         : "javax.annotation:jsr250-api:1.0",
+            "arouter"                  : "com.alibaba:arouter-api:1.2.4",
+            "arouter-compiler"         : "com.alibaba:arouter-compiler:1.1.4",
+
+            "greenDAO"                   : "org.greenrobot:greendao:3.2.2",
+            //6.0权限
+            "permissionsdispatcher"    : "com.github.hotchemi:permissionsdispatcher:3.0.1",
+            //状态栏
+            "statusbarutil"            : "com.jaeger.statusbarutil:library:1.4.0",
+            //拍照
+            "takephoto"                : "com.jph.takephoto:takephoto_library:4.0.3",
+            //版本升级
+            "versionchecklib"          : "com.allenliu.versionchecklib:library:1.8.7",
+
+
+            //android快速开发工具集合（3）
+//            "YUtils"                   : "com.github.yechaoa:YUtils:2.0.5",
+            //各种util（16k）
+            "utilcode"                 : "com.blankj:utilcode:1.6.4",
+
+            //view
+            "autolayout"                   : "com.zhy:autolayout:1.4.5",
+
+            //仿iOS的PickerView控件，有时间选择和选项选择并支持一二三级联动效果
+            "pickerview"                   : "com.contrarywind:Android-PickerView:3.2.5",
+            //
+            "photoview"                    : "com.github.chrisbanes.photoview:library:2.1.3",
+            //上传以及下载进度监听
+            "progressmanager"              : "me.jessyan:progressmanager:1.5.0",
+            //数字进度条
+            "numberprogressbar"            : "com.daimajia.numberprogressbar:library:1.2@aar",
+
+            //上拉加载
+//            "paginate"                     : "com.github.markomilos:paginate:0.5.1",
+
+            "banner"                       : "com.youth.banner:banner:1.4.10",
+
+            //图片选择器，okgo作者
+            "ImagePicker"                  : "com.lzy.widget:imagepicker:0.5.5",
+            "PictureSelector"              : "com.github.LuckSiege.PictureSelector:picture_library:v2.1.1",
+            //图像和视频选择器   知乎
+            "matisse"                      : "compile ‘com.zhihu.android:matisse:0.4.3",
+
+            "ViewPagerIndicator"           : "com.shizhefei:ViewPagerIndicator:1.1.5",
+            //tab指示器
+            "EasyIndicator"                : "com.github.LuckSiege:EasyIndicator:v1.1.1",
+
+            "MaterialEditText"             : "com.rengwuxian.materialedittext:library:2.1.4",
+
+            "material-dialogs"             : "com.afollestad.material-dialogs:core:0.9.5.0",
+            //各种样式的Dialog
+            "dialogplus"                   : "com.orhanobut:dialogplus:1.11@aar",
+            //土司
+            "Toasty"                       : "com.github.GrenderG:Toasty:1.2.5",
+            //Notify Util
+
+            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.34",
+            //RecyclerView的LayoutManager扩展-阿里
+            "vlayout"                      : "com.alibaba.android:vlayout:1.1.0@aar",
+            "SmartRefreshLayout"           : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0-alpha-1",
+            "SmartRefreshHeader"           : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-alpha-1",
+
+            //支持各种控件刷新
+//            "XRefreshView"                 : "com.huxq17.xrefreshview:xrefreshview:3.6.9",
+            "SuperRecyclerView"            : "com.supercwn.superrecycleview:superlibrary:1.2.5",
+            "EasyRecyclerView"             : "com.jude:easyrecyclerview:4.4.0",
+
+            //底部导航栏
+            "bottom-bar"                   : "com.roughike:bottom-bar:2.3.1",
+            //一个增强BottomNavigationView的安卓库
+//            "BottomNavigationViewEx"       : "com.github.ittianyu:BottomNavigationViewEx:1.2.4",
+
+            //tablayout
+            "FlycoTabLayout"               : "com.flyco.tablayout:FlycoTabLayout_Lib:2.1.2@aar",
+            "Dachshund-Tab-Layout"         : "com.github.Andy671:Dachshund-Tab-Layout:v0.3.1",
+            //滑动导航栏
+            "PagerSlidingTabStrip"         : "com.astuetz:pagerslidingtabstrip:1.0.1",
+
+            //Animations
+            "lottie"                       : "com.airbnb.android:lottie:2.1.0",
+            "nineoldandroids"              : "com.nineoldandroids:library:2.4.0",
+            "SpinKit"                      : "com.github.ybq:Android-SpinKit:1.1.0",
+            "daimajia-easing"              : "com.daimajia.easing:library:2.0@aar",
+            "androidanimations"            : "com.daimajia.androidanimations:library:2.2@aar",
+
+            //charts-android
+            "hellocharts"                  : "com.github.lecho:hellocharts-android:v1.5.8",
+
+            //富文本解析器
+            "richtext"                     : "com.zzhoujay.richtext:richtext:2.5.2",
+            //pdf
+            "pdf-viewer"                   : "com.github.barteksc:android-pdf-viewer:2.8.2",
+
+            //表单校验
+            "saripaar"                     : "com.mobsandgeeks:android-saripaar:2.0.3",
+
+    ]
+
+}
