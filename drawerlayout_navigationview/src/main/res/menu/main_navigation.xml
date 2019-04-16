@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item android:id="@+id/msg"
+          android:icon="@drawable/ic_launcher_background"
+          android:title="消息"/>
+    <item android:id="@+id/contact"
+          android:icon="@drawable/ic_launcher_background"
+          android:title="联系人"/>
+    <item android:id="@+id/dynamic"
+          android:icon="@drawable/ic_launcher_background"
+          android:title="动态"/>
+    <item android:id="@+id/mine"
+          android:icon="@drawable/ic_launcher_background"
+          android:title="我的"/>
+</menu>
