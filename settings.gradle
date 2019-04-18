@@ -1,1 +1,1 @@
-include ':app', ':drawerlayout', ':drawerlayout_navigationview'
+include ':app', ':drawerlayout', ':drawerlayout_navigationview', ':jetpack_palette'
