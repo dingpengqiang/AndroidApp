@@ -5,10 +5,10 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/AndroidApp.iml" filepath="$PROJECT_DIR$/.idea/AndroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/AndroidApp.iml" filepath="$PROJECT_DIR$/AndroidApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawerlayout/drawerlayout.iml" filepath="$PROJECT_DIR$/drawerlayout/drawerlayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/drawerlayout_navigationview/drawerlayout_navigationview.iml" filepath="$PROJECT_DIR$/drawerlayout_navigationview/drawerlayout_navigationview.iml" />
       <module fileurl="file://$PROJECT_DIR$/jetpack_palette/jetpack_palette.iml" filepath="$PROJECT_DIR$/jetpack_palette/jetpack_palette.iml" />
+      <module fileurl="file://$PROJECT_DIR$/recyclerview_into_rv/recyclerview_into_rv.iml" filepath="$PROJECT_DIR$/recyclerview_into_rv/recyclerview_into_rv.iml" />
     </modules>
   </component>
 </project>
