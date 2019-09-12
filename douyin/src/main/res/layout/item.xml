@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    <FrameLayout
+            android:id="@+id/frame_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorAccent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+
+    </FrameLayout>
+
+    <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@mipmap/ic_launcher_round"
+            android:id="@+id/img_music"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/img_share"
+            app:layout_constraintEnd_toEndOf="@+id/img_music"
+            app:layout_constraintStart_toStartOf="@+id/img_music"
+            android:layout_marginBottom="64dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_music"/>
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/img_msg"
+            app:layout_constraintEnd_toEndOf="@+id/img_share"
+            app:layout_constraintStart_toStartOf="@+id/img_share"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_share"/>
+
+    <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/img_red_heart"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_msg"
+            app:layout_constraintEnd_toEndOf="@+id/img_msg"
+            app:layout_constraintStart_toStartOf="@+id/img_msg"/>
+
+    <ImageView
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            app:srcCompat="@mipmap/ic_launcher"
+            android:id="@+id/img_user"
+            android:layout_marginBottom="48dp"
+            app:layout_constraintBottom_toTopOf="@+id/img_red_heart"
+            app:layout_constraintStart_toStartOf="@+id/img_red_heart"
+            app:layout_constraintEnd_toEndOf="@+id/img_red_heart"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
